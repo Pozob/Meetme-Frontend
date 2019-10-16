@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import Joi from 'joi-browser';
 import InputField from './inputField';
 import SelectField from './selectField';
-import M from "materialize-css"
+
 
 class Form extends Component {
     state = {data: {}, errors: {}};
-    
-    componentDidMount() {
-        console.log("M", M);
-    }
     
     validate = () => {
         const options = {abortEarly: false};

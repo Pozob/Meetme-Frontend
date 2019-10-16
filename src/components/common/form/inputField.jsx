@@ -1,8 +1,14 @@
 import React from 'react';
 
 const InputField = ({name, label, error, s, ...rest}) => {
+    const getClasses = () => {
+        let className = "input-field ";
+        className += s ? `col ${s}` : "";
+        return className;
+    };
+    
     return (
-        <div className={`input-field col ${s}`}>
+        <div className={getClasses()}>
             <input name={name} id={name} {...rest}/>
             <label htmlFor={name}>{label}</label>
         {/*    TODO: Display Errors*/}
@@ -11,7 +17,8 @@ const InputField = ({name, label, error, s, ...rest}) => {
 };
 
 InputField.defaultProps = {
-    type: 'text'
+    type: 'text',
+    s: ""
 };
 
 export default InputField;

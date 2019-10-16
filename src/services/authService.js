@@ -15,6 +15,10 @@ async function login(username, password) {
     localStorage.setItem(tokenName, webToken);
 }
 
+function loginWithToken(webToken) {
+    localStorage.setItem(tokenName, webToken);
+}
+
 function getCurrentUser() {
     try {
         return decode(getWebToken());
@@ -29,5 +33,6 @@ export default {
     getWebToken,
     getCurrentUser,
     login,
+    loginWithToken,
     logout
 }
