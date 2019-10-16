@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import "core-js"; //Support for older browsers....
+import React, { Component }        from 'react';
 import { Switch, Route, Redirect } from "react-router-dom"
-import authService from "./services/authService";
-import Login from "./components/pages/login";
+import authService                 from "./services/authService";
+import Navbar                      from "./components/common/navbar";
+import Register                    from "./components/pages/register";
+import Login                       from "./components/pages/login";
 import './App.css';
-import Navbar from "./components/common/navbar";
 
 class App extends Component {
     state = {};
@@ -19,8 +21,9 @@ class App extends Component {
                 <Navbar/>
                 <main className="container">
                     <Switch>
+                        <Route path={"/register"} component={Register} />
                         <Route path={"/login"} component={Login} />
-                        <Redirect to={"/login"} />
+                        <Redirect from={"/"} to={"/login"} />
                     </Switch>
                 </main>
             </React.Fragment>
