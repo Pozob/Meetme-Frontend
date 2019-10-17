@@ -19,6 +19,7 @@ const Navbar = () => {
                         <React.Fragment>
                             <li><NavLink to={'/profile'}>{user.name}</NavLink></li>
                             <li><NavLink to={'/meetings'}>Meetings</NavLink></li>
+                            <li><NavLink to={"/rooms"}>Raumverwaltung</NavLink></li>
                             <li><NavLink to={'/logout'}>Logout</NavLink></li>
                         </React.Fragment>
                     )}

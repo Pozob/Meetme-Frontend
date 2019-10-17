@@ -13,6 +13,7 @@ import Logout from "./components/pages/logout";
 import NotFound from "./components/pages/not-found";
 import Profile from "./components/pages/profile";
 import Home from "./components/pages/home";
+import Meeting from "./components/pages/meeting";
 
 class App extends Component {
     state = {};
@@ -40,8 +41,10 @@ class App extends Component {
                         <Route path={"/logout"} component={Logout} />
                         <Route path={"/home"} component={Home} />
                         <ProtectedRoute path={"/profile"} render={props => <Profile onUserUpdate={this.handleUpdateUser} {...props} />} />
-                        <Route path={"/not-found"} component={NotFound} />
+                        <ProtectedRoute exact path={"/meetings"} component={Meeting} />
+                        <ProtectedRoute path={"/meetings/:id"} component={Meeting} />
                         
+                        <Route path={"/not-found"} component={NotFound} />
                         <Redirect exact from={"/"} to={"/home"} />
                         <Redirect to={"/not-found"} />
                     </Switch>

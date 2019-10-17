@@ -28,7 +28,7 @@ class EditProfileForm extends Form {
         const userData = {
             name: user.name,
             email: user.email,
-            department: user.department
+            department: user.department._id
         };
         this.setState({data: userData});
     };
