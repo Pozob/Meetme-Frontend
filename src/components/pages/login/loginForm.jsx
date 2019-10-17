@@ -1,6 +1,6 @@
 import React       from "react";
 import Joi         from "joi-browser";
-import Form        from "../../common/form/form";
+import Form        from "../../common/form";
 import authService from "../../../services/authService";
 
 class LoginForm extends Form {
@@ -16,7 +16,11 @@ class LoginForm extends Form {
     
     submit = () => {
         const {username, password} = this.state.data;
-        authService.login(username, password).then(() => window.location = "/");
+        authService.login(username, password).then(() => {
+            const { state } = this.props.location;
+            if(state) return window.location = state.from.pathname;
+            window.location = "/";
+        });
     };
     
     render() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Joi from 'joi-browser';
-import InputField from './inputField';
-import SelectField from './selectField';
+import InputField from './form/inputField';
+import SelectField from './form/selectField';
 
 
 class Form extends Component {

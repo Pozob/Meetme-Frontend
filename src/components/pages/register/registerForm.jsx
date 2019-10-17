@@ -1,6 +1,6 @@
 import React             from "react";
 import Joi               from "joi-browser";
-import Form              from "../../common/form/form";
+import Form              from "../../common/form";
 import { registerUser }  from "../../../services/userService";
 import departmentService from "../../../services/departmentService";
 import authService       from "../../../services/authService";
