@@ -7,13 +7,29 @@ class Meeting extends Component {
         meetings: []
     };
     
-    async componentDidMount() {
-        const {data: meetings} = await meetingService.getAllMeetings();
-        this.setState({meetings})
+    mapModelToView = () => {
+         meetingService.getAllMeetings().then(({data: meetings}) => {
+             const viewMeetings = meetings.map(meeting => {
+                 return {
+                     _id: meeting._id,
+                     title: meeting.name,
+                     content: meeting.description,
+                     link: {
+                         target: "/meetings/"+meeting._id,
+                         label: "Los!"
+                     },
+                     imageLink: `https://picsum.photos/seed/${meeting._id}/298`
+                 };
+             });
+             this.setState({meetings: viewMeetings})
+         });
+    };
+    
+    componentDidMount() {
+        this.mapModelToView();
     }
     
     render() {
-        console.log("Meetings:", this.state.meetings);
         return (
             <React.Fragment>
                 <h3>Meetings</h3>

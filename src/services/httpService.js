@@ -3,11 +3,15 @@ import { toast } from "react-toastify";
 
 axios.defaults.baseURL = process.env.REACT_APP_BACKEND_URL;
 axios.interceptors.response.use(null, error => {
-    const userError = error.response.status && error.response.status >= 400 && error.response.status < 500;
+    try {
+        const userError = error.response && error.response.status >= 400 && error.response.status < 500;
     
-    if(!userError) {
-        toast.error("Ein unerwarteter Fehler ist passiert");
-        console.log("Hard Error:", error);
+        if(!userError) {
+            toast.error("Ein unerwarteter Fehler ist passiert");
+            console.log("Hard Error:", error);
+        }
+    } catch(e) {
+        toast.error("Error");
     }
     
     return Promise.reject(error);

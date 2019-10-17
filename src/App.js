@@ -14,6 +14,7 @@ import NotFound from "./components/pages/not-found";
 import Profile from "./components/pages/profile";
 import Home from "./components/pages/home";
 import Meeting from "./components/pages/meeting";
+import Rooms from "./components/pages/room";
 
 class App extends Component {
     state = {};
@@ -43,6 +44,7 @@ class App extends Component {
                         <ProtectedRoute path={"/profile"} render={props => <Profile onUserUpdate={this.handleUpdateUser} {...props} />} />
                         <ProtectedRoute exact path={"/meetings"} component={Meeting} />
                         <ProtectedRoute path={"/meetings/:id"} component={Meeting} />
+                        <ProtectedRoute exact path={"/rooms"} component={Rooms} />
                         
                         <Route path={"/not-found"} component={NotFound} />
                         <Redirect exact from={"/"} to={"/home"} />

@@ -5,8 +5,8 @@ import authService from "../../services/authService";
 const Navbar = () => {
     const user = authService.getCurrentUser();
     return (
-        <nav>
-            <div className="nav-wrapper blue-grey darken-2">
+        <nav className="blue-grey darken-2">
+            <div className="nav-wrapper container">
                 <Link className={"brand-logo"} to={'/'}>MeetMe</Link>
                 <ul className="right  hide-on-med-and-down">
                     {!user && (

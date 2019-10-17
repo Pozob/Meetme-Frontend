@@ -1,22 +1,24 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const CardPanel = ({cardObj}) => {
+    const {title, content, imageLink, link} = cardObj;
     return (
-        <React.Fragment>
-            <div className="card">
+        <div className="card hoverable">
+            {imageLink && (
                 <div className="card-image">
-                    <img src="https://picsum.photos/300" alt="" />
-                    <span className="card-title">{cardObj.name}</span>
-                </div>
-                <div className="card-content">
-                    <p>{cardObj.description}</p>
-                </div>
-                <div className="card-action">
-                    <Link to={"/meetings/" + cardObj._id}>Details</Link>
-                </div>
+                    <img src={imageLink} alt=""/>
+                </div>)}
+            <div className="card-content">
+                {title && <span className="card-title">{title}</span>}
+                <p>{content}</p>
             </div>
-        </React.Fragment>
+            {link && (
+                <div className="card-action">
+                    <Link to={link.target}>{link.label}</Link>
+                </div>
+            )}
+        </div>
     );
 };
 
