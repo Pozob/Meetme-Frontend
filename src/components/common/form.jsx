@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Joi from 'joi-browser';
+import M from "materialize-css";
 import InputField from './form/inputField';
 import SelectField from './form/selectField';
 
@@ -15,6 +16,10 @@ class Form extends Component {
         for (let item of error.details) errors[item.path[0]] = item.message;
         return errors;
     };
+    
+    componentDidUpdate() {
+        M.updateTextFields();
+    }
     
     validateProperty = ({name, value}) => {
         const obj = {[name]: value};

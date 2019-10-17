@@ -13,7 +13,6 @@ const ProtectedRoute = ({roles, path, component: Component, render, ...rest}) =>
     
     return (
         <Route path={path} {...rest} render={props => {
-            console.log("This:", this);
             //If the user it not logged in, we redirect them to the loggin page. Also give the login Page the current page, so we can redirect the user here again
             if(!user) return <Redirect to={{pathname: "/login", state: {from: props.location}}}/>;
             

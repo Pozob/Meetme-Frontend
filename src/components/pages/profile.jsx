@@ -1,20 +1,12 @@
 import React, { Component } from "react";
-import authService from "../../services/authService";
+import EditProfileForm from "./profile/editProfileForm";
 
 class Profile extends Component {
-    state = {
-        user: {}
-    };
-    
-    componentDidMount() {
-        const user = authService.getCurrentUser();
-        this.setState({user});
-    };
-    
     render() {
         return (
             <React.Fragment>
                 <h3>Profil</h3>
+                <EditProfileForm onUserUpdate={this.props.handleUpdateUser} {...this.props} />
             </React.Fragment>
         );
     }
