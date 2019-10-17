@@ -26,7 +26,7 @@ class RegisterForm extends Form {
             authService.loginWithToken(user.headers["x-webtoken"]);
             window.location = "/"; // Redirect with full reload
         } catch(e) {
-            console.log("Catch Error",e);
+        
         }
     };
     
@@ -38,12 +38,14 @@ class RegisterForm extends Form {
     render() {
         return (
             <React.Fragment>
-                {this.renderInput("username", "Nutzername",{autoFocus: true,})}
-                {this.renderInput("password", "Passwort", {type: "password"})}
-                {this.renderInput("email", "E-Mail", {type: "email"})}
-                {this.renderInput("name", "Name",)}
-                {this.renderSelect("department", "Abteilung", this.state.departments)}
-                {this.renderSubmitButton("Registrieren")}
+                <form onSubmit={this.handleSubmit}>
+                    {this.renderInput("username", "Nutzername",{autoFocus: true,})}
+                    {this.renderInput("password", "Passwort", {type: "password"})}
+                    {this.renderInput("email", "E-Mail", {type: "email"})}
+                    {this.renderInput("name", "Name",)}
+                    {this.renderSelect("department", "Abteilung", this.state.departments)}
+                    {this.renderSubmitButton("Registrieren")}
+                </form>
             </React.Fragment>
         );
     }

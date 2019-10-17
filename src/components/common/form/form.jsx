@@ -41,7 +41,7 @@ class Form extends Component {
     };
     
     renderSubmitButton(label) {
-        return <button disabled={this.validate()} onClick={this.handleSubmit} className="btn btn-primary">{label}</button>;
+        return <button type="submit" disabled={this.validate()} className="waves-effect waves-light btn">{label}</button>;
     }
     
     renderSelect(name, label, selections, options) {

@@ -6,7 +6,7 @@ const Navbar = () => {
     const user = authService.getCurrentUser();
     return (
         <nav>
-            <div className="nav-wrapper">
+            <div className="nav-wrapper blue-grey darken-2">
                 <Link className={"brand-logo"} to={'/'}>MeetMe</Link>
                 <ul className="right  hide-on-med-and-down">
                     {!user && (
