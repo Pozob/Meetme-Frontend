@@ -1,6 +1,6 @@
 import "core-js"; //Support for older browsers....
-import './App.css';
 import 'react-toastify/dist/ReactToastify.min.css';
+import './App.css';
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from "react-router-dom"
 import authService from "./services/authService";
@@ -21,7 +21,6 @@ class App extends Component {
     
     componentDidMount() {
         const user = authService.getCurrentUser();
-        console.log("APP User:", user);
         this.setState({user})
     };
     
