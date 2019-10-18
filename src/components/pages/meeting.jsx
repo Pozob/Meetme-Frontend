@@ -8,15 +8,17 @@ class Meeting extends Component {
     };
     
     mapModelToView = () => {
-         meetingService.getAllMeetings().then(({data: meetings}) => {
+         meetingService.getAll().then(({data: meetings}) => {
              const viewMeetings = meetings.map(meeting => {
+                 let description = meeting.description.substr(0, 80);
+                 description = description.length === meeting.description.length ? description : description+"...";
                  return {
                      _id: meeting._id,
                      title: meeting.name,
-                     content: meeting.description,
+                     content: description,
                      link: {
                          target: "/meetings/"+meeting._id,
-                         label: "Los!"
+                         // label: "Los!"
                      },
                      imageLink: `https://picsum.photos/seed/${meeting._id}/298`
                  };

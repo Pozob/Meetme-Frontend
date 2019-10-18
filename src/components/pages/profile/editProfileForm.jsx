@@ -16,7 +16,7 @@ class EditProfileForm extends Form {
     schema = {
         // password: Joi.string().min(5).required(),
         email: Joi.string().email({minDomainAtoms: 2}).required(),
-        name: Joi.string().alphanum().required(),
+        name: Joi.string().required(),
         department: Joi.string().required()
     };
     

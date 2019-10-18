@@ -2,6 +2,7 @@ import React       from "react";
 import Joi         from "joi-browser";
 import Form        from "../../common/form";
 import authService from "../../../services/authService";
+import { toast } from "react-toastify";
 
 class LoginForm extends Form {
     state = {
@@ -20,7 +21,11 @@ class LoginForm extends Form {
             const { state } = this.props.location;
             if(state) return window.location = state.from.pathname;
             window.location = "/";
-        });
+        })
+            .catch(err => {
+                console.log("Login Error", err.response);
+                toast.error(err.response.data);
+            });
     };
     
     render() {

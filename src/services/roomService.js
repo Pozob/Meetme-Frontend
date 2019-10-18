@@ -2,20 +2,25 @@ import httpService from "./httpService";
 
 const endPoint = "/room";
 
-function getRooms() {
+function getAll() {
     return httpService.get(endPoint);
 }
 
-function saveRoom(roomId, room) {
+function get(id) {
+    return httpService.get(`${endPoint}/${id}`);
+}
+
+function edit(roomId, room) {
     return httpService.put(`${endPoint}/${roomId}`, room);
 }
 
-function createRoom(room) {
+function create(room) {
     return httpService.post(endPoint, room);
 }
 
 export default {
-    getRooms,
-    saveRoom,
-    createRoom
+    getAll,
+    get,
+    edit,
+    create
 }
