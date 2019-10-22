@@ -7,16 +7,16 @@ const endPoint = "/auth";
 http.setWebToken(getWebToken());
 
 function getWebToken() {
-    return localStorage.getItem(tokenName);
+    return sessionStorage.getItem(tokenName);
 }
 
 async function login(username, password) {
     const {data: webToken} = await http.post(endPoint, {username, password});
-    localStorage.setItem(tokenName, webToken);
+    sessionStorage.setItem(tokenName, webToken);
 }
 
 function loginWithToken(webToken) {
-    localStorage.setItem(tokenName, webToken);
+    sessionStorage.setItem(tokenName, webToken);
 }
 
 function getCurrentUser() {
@@ -26,7 +26,7 @@ function getCurrentUser() {
 }
 
 function logout() {
-    localStorage.removeItem(tokenName);
+    sessionStorage.removeItem(tokenName);
 }
 
 export default {

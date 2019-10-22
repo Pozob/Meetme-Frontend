@@ -43,10 +43,10 @@ class App extends Component {
                         <Route path={"/logout"} component={Logout} />
                         <Route path={"/home"} component={Home} />
                         <ProtectedRoute path={"/profile"} render={props => <Profile onUserUpdate={this.handleUpdateUser} {...props} />} />
+                        <ProtectedRoute exact path={"/meetings/:id"} component={MeetingDetails} />
                         <ProtectedRoute exact path={"/meetings"} component={Meeting} />
-                        <ProtectedRoute path={"/meetings/:id"} component={MeetingDetails} />
+                        <ProtectedRoute exact path={"/rooms/:id"} component={RoomDetail} />
                         <ProtectedRoute exact path={"/rooms"} component={Rooms} />
-                        <ProtectedRoute path={"/rooms/:id"} component={RoomDetail} />
                         
                         <Route path={"/not-found"} component={NotFound} />
                         <Redirect exact from={"/"} to={"/home"} />

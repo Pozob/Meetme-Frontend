@@ -10,8 +10,18 @@ function get(id) {
     return httpService.get(`${endPoint}/${id}`);
 }
 
-function edit(id, meeting) {
-    return httpService.put(`${endPoint}/${id}`, meeting);
+async function edit(id, meeting) {
+    // return httpService.put(`${endPoint}/${id}/addUser`, meeting);
+}
+
+function addParticipant(meetingId, userIds) {
+    const data = {addUser: userIds}
+    return httpService.patch(`${endPoint}/${meetingId}/`, data);
+}
+
+function removeParticipant(meetingId, userIds) {
+    const data = {removeUser: userIds};
+    return httpService.patch(`${endPoint}/${meetingId}`, data);
 }
 
 function create(meeting) {
@@ -22,5 +32,7 @@ export default {
     getAll,
     get,
     edit,
+    addParticipant,
+    removeParticipant,
     create
 }

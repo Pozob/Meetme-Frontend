@@ -4,6 +4,7 @@ import meetingService from "../../services/meetingService";
 import Detail from "../common/detail";
 import MeetingParticipants from "./meetings/meetingParticipants";
 import authService from "../../services/authService";
+import Heading from "./meetings/editHeading";
 
 class MeetingDetails extends Component {
     state = {
@@ -13,27 +14,46 @@ class MeetingDetails extends Component {
         userIsParticipating: false
     };
     
+    user = {};
+    
     async componentDidMount() {
+        this.user = authService.getCurrentUser();
         const {data: meeting} = await meetingService.get(this.props.match.params.id);
-        console.log("Meeting", meeting);
         const userIsParticipating = this.userIsInMeeting(meeting);
-        console.log("Parti", userIsParticipating);
         this.setState({meeting, userIsParticipating});
-        console.log(this.state);
     }
     
     handleActionButton = () => {
-        console.log("Now?", this.state.userIsParticipating);
-        // const {meeting} = this.state;
-        // meeting.participants = [];
-        // this.setState({meeting});
+        const isParti = this.state.userIsParticipating;
+        isParti ? this.removeCurrentUserFromMeeting() : this.addCurrentUserToMeeting();
+        
+    };
+    
+    addCurrentUserToMeeting = () => {
+        const oldMeeting = {...this.state.meeting};
+        const meeting = {...this.state.meeting};
+        meeting.participants.push(this.user);
+        
+        this.setState({meeting, userIsParticipating: true});
+        meetingService.addParticipant(this.state.meeting._id, [this.user._id])
+            .catch(err => this.setState({meeting: oldMeeting}))
+    };
+    
+    removeCurrentUserFromMeeting = () => {
+        const oldMeeting = {...this.state.meeting};
+        const meeting = {...this.state.meeting};
+        meeting.participants = this.state.meeting.participants.filter(p => p._id !== this.user._id);
+        
+        this.setState({meeting, userIsParticipating: false});
+        meetingService.removeParticipant(this.state.meeting._id, [this.user._id])
+            .catch(err => this.setState({meeting: oldMeeting}));
     };
     
     render() {
         const {meeting} = this.state;
         return (
             <React.Fragment>
-                <h3>{`Meeting Details für ${meeting.name}`}</h3>
+                <Heading editLink={"/meetings/edit/"+meeting._id}>{`Meeting Details für ${meeting.name}`}</Heading>
                 {this.renderActionButton()}
                 
                 {this.renderDetails()}
@@ -60,9 +80,7 @@ class MeetingDetails extends Component {
     };
     
     userIsInMeeting = (meeting) => {
-        // Get ID from current User
-        const {id} = authService.getCurrentUser();
-        const userIsParticipating = meeting.participants.find(p => p._id === id);
+        const userIsParticipating = meeting.participants.find(p => p._id === this.user._id);
         return !!userIsParticipating;
     };
     

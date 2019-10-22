@@ -44,7 +44,7 @@ class EditProfileForm extends Form {
     }
     
     submit() {
-        saveUser(this.user.id, this.state.data).then(({headers}) => {
+        saveUser(this.user._id, this.state.data).then(({headers}) => {
             const token = headers['x-webtoken'];
             authService.loginWithToken(token);
             this.props.onUserUpdate();
