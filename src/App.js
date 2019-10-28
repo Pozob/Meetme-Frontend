@@ -17,6 +17,7 @@ import Meeting from "./components/pages/meeting";
 import Rooms from "./components/pages/room";
 import RoomDetail from "./components/pages/roomDetails";
 import MeetingDetails from "./components/pages/meetingDetails";
+import EditMeeting from "./components/pages/editMeeting";
 
 class App extends Component {
     state = {};
@@ -43,6 +44,7 @@ class App extends Component {
                         <Route path={"/logout"} component={Logout} />
                         <Route path={"/home"} component={Home} />
                         <ProtectedRoute path={"/profile"} render={props => <Profile onUserUpdate={this.handleUpdateUser} {...props} />} />
+                        <ProtectedRoute exact path={"/meetings/edit/:id"} component={EditMeeting} />
                         <ProtectedRoute exact path={"/meetings/:id"} component={MeetingDetails} />
                         <ProtectedRoute exact path={"/meetings"} component={Meeting} />
                         <ProtectedRoute exact path={"/rooms/:id"} component={RoomDetail} />

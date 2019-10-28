@@ -4,7 +4,7 @@ import meetingService from "../../services/meetingService";
 import Detail from "../common/detail";
 import MeetingParticipants from "./meetings/meetingParticipants";
 import authService from "../../services/authService";
-import Heading from "./meetings/editHeading";
+import Heading from "../common/editHeading";
 
 class MeetingDetails extends Component {
     state = {
@@ -17,10 +17,15 @@ class MeetingDetails extends Component {
     user = {};
     
     async componentDidMount() {
-        this.user = authService.getCurrentUser();
-        const {data: meeting} = await meetingService.get(this.props.match.params.id);
-        const userIsParticipating = this.userIsInMeeting(meeting);
-        this.setState({meeting, userIsParticipating});
+        try {
+            this.user = authService.getCurrentUser();
+            const {data: meeting} = await meetingService.get(this.props.match.params.id);
+            const userIsParticipating = this.userIsInMeeting(meeting);
+            this.setState({meeting, userIsParticipating});
+        } catch(e) {
+            this.props.history.replace("/not-found");
+        }
+        
     }
     
     handleActionButton = () => {

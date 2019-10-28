@@ -13,10 +13,10 @@ class RegisterForm extends Form {
     };
     
     schema = {
-        username: Joi.string().alphanum().min(5).required(),
+        username: Joi.string().min(5).required(),
         password: Joi.string().min(5).required(),
         email: Joi.string().email({minDomainAtoms: 2}).required(),
-        name: Joi.string().alphanum().required(),
+        name: Joi.string().required(),
         department: Joi.string().required()
     };
     

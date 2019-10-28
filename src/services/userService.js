@@ -10,3 +10,11 @@ export function saveUser(userId, user) {
     const url = `${endPoint}/${userId}`;
     return httpService.patch(url, user);
 }
+
+function getAll() {
+    return httpService.get(endPoint);
+}
+
+export default {
+    getAll
+}

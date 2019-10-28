@@ -11,11 +11,11 @@ function get(id) {
 }
 
 async function edit(id, meeting) {
-    // return httpService.put(`${endPoint}/${id}/addUser`, meeting);
+    return httpService.put(`${endPoint}/${id}/`, meeting);
 }
 
 function addParticipant(meetingId, userIds) {
-    const data = {addUser: userIds}
+    const data = {addUser: userIds};
     return httpService.patch(`${endPoint}/${meetingId}/`, data);
 }
 
