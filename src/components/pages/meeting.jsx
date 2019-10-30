@@ -19,7 +19,6 @@ class Meeting extends Component {
                      content: description,
                      link: {
                          target: "/meetings/"+meeting._id,
-                         // label: "Los!"
                      },
                      imageLink: `https://picsum.photos/seed/${meeting._id}/298`
                  };

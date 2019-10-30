@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import roomService from "../../services/roomService";
 import Detail from "../common/detail";
+import Heading from "../common/editHeading";
 
 class RoomDetail extends Component {
     state = {
@@ -16,10 +17,11 @@ class RoomDetail extends Component {
         const {room} = this.state;
         return (
             <React.Fragment>
-                <h3>{`Details für ${room.name}`}</h3>
+                <Heading editLink={`/rooms/edit/${room._id}`}>{`Details für ${room.name}`}</Heading>
                 <div className="row">
                     <Detail label={"Name"} detail={room.name} />
                     <Detail label={"Sitzplätze"} detail={room.seatsize} />
+                    <Detail label={"Ausrüstung"} detail={room.equipment} />
                 </div>
             </React.Fragment>
         );

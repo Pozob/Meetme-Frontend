@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import roomService from "../../services/roomService";
 import CardPanel from "../common/cardPanel";
+import Heading from "../common/editHeading";
 
 class Rooms extends Component {
     state = {
@@ -32,7 +33,7 @@ class Rooms extends Component {
     render() {
         return (
             <React.Fragment>
-                <h3>Die Meetingräume</h3>
+                <Heading editLink={"/rooms/edit/new"}>Die Meetingräume</Heading>
                 <div className="row">
                     {this.state.rooms.map(room => <div key={room._id+"-div"} className={"col s12 m6 l4"}><CardPanel key={room._id} cardObj={room} /></div>)}
                 </div>

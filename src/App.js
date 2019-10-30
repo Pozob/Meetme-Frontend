@@ -18,6 +18,7 @@ import Rooms from "./components/pages/room";
 import RoomDetail from "./components/pages/roomDetails";
 import MeetingDetails from "./components/pages/meetingDetails";
 import EditMeeting from "./components/pages/editMeeting";
+import EditRoom from "./components/pages/editRoom";
 
 class App extends Component {
     state = {};
@@ -47,6 +48,7 @@ class App extends Component {
                         <ProtectedRoute exact path={"/meetings/edit/:id"} component={EditMeeting} />
                         <ProtectedRoute exact path={"/meetings/:id"} component={MeetingDetails} />
                         <ProtectedRoute exact path={"/meetings"} component={Meeting} />
+                        <ProtectedRoute exact path={"/rooms/edit/:id"} component={EditRoom} />
                         <ProtectedRoute exact path={"/rooms/:id"} component={RoomDetail} />
                         <ProtectedRoute exact path={"/rooms"} component={Rooms} />
                         

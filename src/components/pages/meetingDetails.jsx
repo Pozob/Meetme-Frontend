@@ -35,23 +35,23 @@ class MeetingDetails extends Component {
     };
     
     addCurrentUserToMeeting = () => {
-        const oldMeeting = {...this.state.meeting};
+        const oldstate = {...this.state};
         const meeting = {...this.state.meeting};
         meeting.participants.push(this.user);
         
         this.setState({meeting, userIsParticipating: true});
         meetingService.addParticipant(this.state.meeting._id, [this.user._id])
-            .catch(err => this.setState({meeting: oldMeeting}))
+            .catch(err => this.setState(oldstate))
     };
     
     removeCurrentUserFromMeeting = () => {
-        const oldMeeting = {...this.state.meeting};
+        const oldstate = {...this.state};
         const meeting = {...this.state.meeting};
         meeting.participants = this.state.meeting.participants.filter(p => p._id !== this.user._id);
         
         this.setState({meeting, userIsParticipating: false});
         meetingService.removeParticipant(this.state.meeting._id, [this.user._id])
-            .catch(err => this.setState({meeting: oldMeeting}));
+            .catch(err => this.setState(oldstate));
     };
     
     render() {

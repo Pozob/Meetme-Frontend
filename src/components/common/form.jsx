@@ -7,6 +7,7 @@ import Datepicker from "./form/datePicker";
 import Timepicker from "./form/timePicker";
 import ChipInput from "./form/chipInput";
 import Checkbox from "./form/checkbox";
+import RangeSlider from "./form/rangeSlider";
 
 
 class Form extends Component {
@@ -76,6 +77,11 @@ class Form extends Component {
     renderChipInput(name, label, options) {
         const {data, errors} = this.state;
         return <ChipInput name={name} label={label} value={data[name]} onChange={this.handleChange} error={errors[name]} {...options} />
+    }
+    
+    renderRangeSlider(name, label, min, max) {
+        const {data} = this.state;
+        return <RangeSlider name={name} label={label} min={min} max={max} value={data[name]} onChange={this.handleChange} />;
     }
     
     renderUserCheckbox(elements, dataField) {
