@@ -50,6 +50,15 @@ class Form extends Component {
         this.setState({data, errors});
     };
     
+    handleDatepickerChange = (datepicker, date) => {
+        const errors = {...this.state.errors};
+        const errorMessage = this.validateProperty(datepicker);
+        if (errorMessage) errors[datepicker.name] = errorMessage; else delete errors[datepicker.name];
+        const data = {...this.state.data};
+        data[datepicker.name] = date;
+        this.setState({data, errors});
+    };
+    
     renderSubmitButton(label) {
         return <button type="submit" disabled={this.validate()} className="waves-effect waves-light btn">{label}</button>;
     }
@@ -66,7 +75,7 @@ class Form extends Component {
     
     renderDatePicker(name, label, options) {
         const {data, errors} = this.state;
-        return <Datepicker name={name} label={label} value={data[name]} onChange={this.handleChange} error={errors[name]} {...options} />
+        return <Datepicker name={name} label={label} value={data[name]} onDateChange={this.handleDatepickerChange} error={errors[name]} {...options} />
     }
     
     renderTimePicker(name, label, options) {
