@@ -59,6 +59,16 @@ class Form extends Component {
         this.setState({data, errors});
     };
     
+    handleTimepickerChange = (timepicker, hour, min) => {
+        const time = `${hour}:${min}`;
+        const errors = {...this.state.errors};
+        const errorMessage = this.validateProperty(timepicker);
+        if (errorMessage) errors[timepicker.name] = errorMessage; else delete errors[timepicker.name];
+        const data = {...this.state.data};
+        data[timepicker.name] = time;
+        this.setState({data, errors});
+    };
+    
     renderSubmitButton(label) {
         return <button type="submit" disabled={this.validate()} className="waves-effect waves-light btn">{label}</button>;
     }
@@ -80,7 +90,7 @@ class Form extends Component {
     
     renderTimePicker(name, label, options) {
         const {data, errors} = this.state;
-        return <Timepicker name={name} label={label} value={data[name]} onChange={this.handleChange} error={errors[name]} {...options} />
+        return <Timepicker name={name} label={label} value={data[name]} onTimeChange={this.handleTimepickerChange} error={errors[name]} {...options} />
     }
     
     renderChipInput(name, label, options) {

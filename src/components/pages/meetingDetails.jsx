@@ -5,6 +5,7 @@ import Detail from "../common/detail";
 import MeetingParticipants from "./meetings/meetingParticipants";
 import authService from "../../services/authService";
 import Heading from "../common/editHeading";
+import moment from "moment";
 
 class MeetingDetails extends Component {
     state = {
@@ -130,11 +131,11 @@ class MeetingDetails extends Component {
             address,
             {
                 label : "Startzeit",
-                content : meeting.timestart || "-"
+                content : moment(meeting.timestart).format("DD.MM.YYYY HH:mm") || "-"
             },
             {
                 label: "Dauer",
-                content: meeting.duration || "-"
+                content: moment(meeting.timeend).diff(moment(meeting.timestart), "minutes") || "-"
             }
         ];
     
