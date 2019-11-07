@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import M from "materialize-css";
-import moment from "moment";
 
 class Datepicker extends Component {
     componentDidMount() {
@@ -16,7 +15,7 @@ class Datepicker extends Component {
                 weekdaysAbbrev: ["So","Mo","Di","Mi","Do","Fr","Sa"]
             },
             showClearBtn: true,
-            onSelect: date => this.props.onChange(this.datepicker, moment.parseZone(date).format("DD.MM.YYYY")),
+            onClose: () => this.props.onChange(this.datepicker, this.datepicker.M_Datepicker.date),
             autoClose: true,
             disableWeekends: true,
             format: "dd.mm.yyyy",

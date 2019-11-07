@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from "moment";
 import Joi from 'joi-browser';
 import M from "materialize-css";
 import InputField from './form/inputField';
@@ -55,7 +56,7 @@ class Form extends Component {
         const errorMessage = this.validateProperty(datepicker);
         if (errorMessage) errors[datepicker.name] = errorMessage; else delete errors[datepicker.name];
         const data = {...this.state.data};
-        data[datepicker.name] = date;
+        data[datepicker.name] = (date && moment(date).format("DD.MM.YYYY")) || "";
         this.setState({data, errors});
     };
     
