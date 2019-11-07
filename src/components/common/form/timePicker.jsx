@@ -9,7 +9,7 @@ class Timepicker extends Component {
                 done: "OK"
             },
             twelveHour: false,
-            onSelect: (hour, min) => this.props.onTimeChange(this.timepicker, hour, min)
+            onSelect: (hour, min) => this.props.onChange(this.timepicker, hour, min)
         };
         M.Timepicker.init(this.timepicker, options)
     }

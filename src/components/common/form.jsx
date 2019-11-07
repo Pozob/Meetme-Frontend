@@ -85,12 +85,12 @@ class Form extends Component {
     
     renderDatePicker(name, label, options) {
         const {data, errors} = this.state;
-        return <Datepicker name={name} label={label} value={data[name]} onDateChange={this.handleDatepickerChange} error={errors[name]} {...options} />
+        return <Datepicker name={name} label={label} value={data[name]} onChange={this.handleDatepickerChange} error={errors[name]} {...options} />
     }
     
     renderTimePicker(name, label, options) {
         const {data, errors} = this.state;
-        return <Timepicker name={name} label={label} value={data[name]} onTimeChange={this.handleTimepickerChange} error={errors[name]} {...options} />
+        return <Timepicker name={name} label={label} value={data[name]} onChange={this.handleTimepickerChange} error={errors[name]} {...options} />
     }
     
     renderChipInput(name, label, options) {
@@ -107,7 +107,7 @@ class Form extends Component {
         const selectedUsers = this.state.data[dataField];
         return elements.map(element => {
             const selected = !!selectedUsers.find(selectedUser => selectedUser === element._id);
-            return <Checkbox user={element} selected={selected} onChange={(e) => this.handleCheckboxSelect(e, dataField)} />
+            return <Checkbox key={element._id} user={element} selected={selected} onChange={(e) => this.handleCheckboxSelect(e, dataField)} />
         });
     }
     

@@ -14,7 +14,7 @@ class Datepicker extends Component {
                 weekdaysShort: ["So","Mo","Di","Mi","Do","Fr","Sa"],
                 weekdaysAbbrev: ["So","Mo","Di","Mi","Do","Fr","Sa"]
             },
-            onSelect: date => this.props.onDateChange(this.datepicker, moment.parseZone(date).format("DD.MM.YYYY")),
+            onSelect: date => this.props.onChange(this.datepicker, moment.parseZone(date).format("DD.MM.YYYY")),
             autoClose: true,
             disableWeekends: true,
             format: "dd.mm.yyyy",
