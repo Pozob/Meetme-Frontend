@@ -6,12 +6,12 @@ const InputField = ({name, label, error, s, ...rest}) => {
         className += s ? `col ${s}` : "";
         return className;
     };
-    
+    console.log(error);
     return (
         <div className={getClasses()}>
-            <input name={name} id={name} {...rest}/>
+            <input className={(error && "invalid")} name={name} id={name} {...rest}/>
             <label htmlFor={name}>{label}</label>
-        {/*    TODO: Display Errors*/}
+            <span className="helper-text" data-error={error} />
         </div>
     );
 };
