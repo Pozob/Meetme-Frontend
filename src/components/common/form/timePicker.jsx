@@ -6,10 +6,17 @@ class Timepicker extends Component {
         const options = {
             i18n: {
                 cancel: "Abbrechen",
-                done: "OK"
+                done: "OK",
+                clear: "Löschen"
             },
+            showClearBtn: true,
             twelveHour: false,
-            onSelect: (hour, min) => this.props.onChange(this.timepicker, hour, min)
+            onCloseEnd: () => {
+                const timepicker = this.timepicker.M_Timepicker;
+                if(timepicker.time === undefined) return;
+                this.props.onChange(this.timepicker, ...timepicker.time.split(":"));
+                this.timepicker.blur();
+            }
         };
         M.Timepicker.init(this.timepicker, options)
     }

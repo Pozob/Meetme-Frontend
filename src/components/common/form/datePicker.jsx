@@ -8,12 +8,14 @@ class Datepicker extends Component {
             i18n: {
                 cancel: "Abbrechen",
                 done: "OK",
+                clear: "Löschen",
                 months: ["Januar", "Februar", "März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],
                 monthsShort: ["Jan","Feb","Mrz","Apr","Mai","Jun","Jul","Aug","Sep","Okt","Nov","Dez"],
                 weekdays: ["Sonntag", "Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"],
                 weekdaysShort: ["So","Mo","Di","Mi","Do","Fr","Sa"],
                 weekdaysAbbrev: ["So","Mo","Di","Mi","Do","Fr","Sa"]
             },
+            showClearBtn: true,
             onSelect: date => this.props.onChange(this.datepicker, moment.parseZone(date).format("DD.MM.YYYY")),
             autoClose: true,
             disableWeekends: true,

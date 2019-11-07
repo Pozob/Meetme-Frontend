@@ -60,11 +60,18 @@ class Form extends Component {
     };
     
     handleTimepickerChange = (timepicker, hour, min) => {
-        const time = `${hour}:${min}`;
-        const errors = {...this.state.errors};
-        const errorMessage = this.validateProperty(timepicker);
-        if (errorMessage) errors[timepicker.name] = errorMessage; else delete errors[timepicker.name];
         const data = {...this.state.data};
+        const errors = {...this.state.errors};
+        let time;
+        
+        // I hour is empty, reset time
+        if(hour === "" && min === undefined) {
+            time = "";
+        } else {
+            time = `${hour}:${min}`;
+            const errorMessage = this.validateProperty(timepicker);
+            if (errorMessage) errors[timepicker.name] = errorMessage; else delete errors[timepicker.name];
+        }
         data[timepicker.name] = time;
         this.setState({data, errors});
     };

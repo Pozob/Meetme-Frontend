@@ -4,6 +4,7 @@ import Form from "../../common/form";
 import roomService from "../../../services/roomService";
 import meetingService from "../../../services/meetingService";
 import userService from "../../../services/userService";
+import moment from "moment";
 
 class MeetingForm extends Form {
     state = {
@@ -46,9 +47,9 @@ class MeetingForm extends Form {
             name: meeting.name,
             description: meeting.description,
             room: meeting.room._id,
-            date: meeting.date || "",
-            timestart: meeting.timestart || "",
-            timeend: meeting.timeend || "",
+            date: (meeting.timestart && moment(meeting.time).format("DD.MM.YYYY")) || "",
+            timestart: (meeting.timestart && moment(meeting.timestart).format("HH:mm")) || "",
+            timeend: (meeting.timeend && moment(meeting.timeend).format("HH:mm")) || "",
             participants: meeting.participants.map(user => user._id)
         }
     };
