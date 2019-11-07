@@ -106,7 +106,9 @@ class MeetingDetails extends Component {
         
         const room = {};
         const address = {};
-    
+        
+        const hours = moment.duration(moment(meeting.timeend).diff(moment(meeting.timestart))).hours();
+        const minutes = moment.duration(moment(meeting.timeend).diff(moment(meeting.timestart))).minutes();
         //create not required fields
         if(meeting.room) {
             room.label= "Raum";
@@ -131,11 +133,11 @@ class MeetingDetails extends Component {
             address,
             {
                 label : "Startzeit",
-                content : moment(meeting.timestart).format("DD.MM.YYYY HH:mm") || "-"
+                content : (meeting.timestart && moment(meeting.timestart).format("DD.MM.YYYY HH:mm")) || "-"
             },
             {
                 label: "Dauer",
-                content: moment(meeting.timeend).diff(moment(meeting.timestart), "minutes") || "-"
+                content: (meeting.timeend && `${hours}h ${minutes}m`) || "-"
             }
         ];
     
