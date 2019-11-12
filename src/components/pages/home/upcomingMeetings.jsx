@@ -2,7 +2,6 @@ import React from 'react';
 import MeetingPreviewCard from "./meetingPreviewCard";
 
 const UpcomingMeetings = ({meetings}) => {
-    console.log("Meetings", meetings);
     return (
         <React.Fragment>
             <div className="row">

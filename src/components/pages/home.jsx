@@ -27,10 +27,11 @@ class Home extends Component {
     };
     
     render() {
+        const {user, upcomingMeetings} = this.state;
         return (
             <React.Fragment>
-                <UserGreeting user={this.state.user} />
-                <UpcomingMeetings meetings={this.state.upcomingMeetings} />
+                <UserGreeting meetingBooked={!!upcomingMeetings.length} user={user} />
+                {user && <UpcomingMeetings meetings={this.state.upcomingMeetings} />}
             </React.Fragment>
         );
     }

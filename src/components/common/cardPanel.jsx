@@ -12,11 +12,11 @@ const CardPanel = ({cardObj}) => {
                     </div>)}
                 <div className="card-content black-text">
                     {title && <span className="card-title">{title}</span>}
-                    <p>{content}</p>
+                    <span>{content}</span>
                 </div>
                 {link.label && (
                     <div className="card-action">
-                        <Link to={link.target}>{link.label}</Link>
+                        <span>{link.label}</span>
                     </div>
                 )}
             </div>
