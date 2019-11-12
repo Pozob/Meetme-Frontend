@@ -17,12 +17,12 @@ class MeetingForm extends Form {
     
     schema = {
         _id: Joi.string().allow(""),
-        name: Joi.string().min(3).required(),
-        description: Joi.string().allow(""),
+        name: Joi.string().min(3).required().label("Meeting Name"),
+        description: Joi.string().allow("").label("Beschreibung"),
         room: Joi.string().required().allow(""),
-        date: Joi.string().allow(""),
-        timestart: Joi.string().allow(""),
-        timeend: Joi.string().allow(""),
+        date: Joi.string(),
+        timestart: Joi.string(),
+        timeend: Joi.string(),
         participants: Joi.array().items(Joi.string())
     };
     
@@ -47,7 +47,7 @@ class MeetingForm extends Form {
             name: meeting.name,
             description: meeting.description,
             room: meeting.room._id,
-            date: (meeting.timestart && moment(meeting.time).format("DD.MM.YYYY")) || "",
+            date: (meeting.timestart && moment(meeting.timestart).format("DD.MM.YYYY")) || "",
             timestart: (meeting.timestart && moment(meeting.timestart).format("HH:mm")) || "",
             timeend: (meeting.timeend && moment(meeting.timeend).format("HH:mm")) || "",
             participants: meeting.participants.map(user => user._id)

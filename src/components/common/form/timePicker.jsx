@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import M from "materialize-css";
+import moment from "moment";
 
 class Timepicker extends Component {
     componentDidMount() {
@@ -16,7 +17,8 @@ class Timepicker extends Component {
                 if(timepicker.time === undefined) return;
                 this.props.onChange(this.timepicker, ...timepicker.time.split(":"));
                 this.timepicker.blur();
-            }
+            },
+            minDate: moment().add(1, "days").toDate()
         };
         M.Timepicker.init(this.timepicker, options)
     }

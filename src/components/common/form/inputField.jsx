@@ -1,12 +1,12 @@
 import React from 'react';
 
-const InputField = ({name, label, error, s, ...rest}) => {
+const InputField = ({name, label, error, s, m, ...rest}) => {
     const getClasses = () => {
         let className = "input-field ";
-        className += s ? `col ${s}` : "";
+        className += s || m ? `col ${s} ${m}` : "";
         return className;
     };
-    console.log(error);
+    
     return (
         <div className={getClasses()}>
             <input className={(error && "invalid")} name={name} id={name} {...rest}/>
@@ -18,7 +18,7 @@ const InputField = ({name, label, error, s, ...rest}) => {
 
 InputField.defaultProps = {
     type: 'text',
-    s: ""
+    s: "",
 };
 
 export default InputField;

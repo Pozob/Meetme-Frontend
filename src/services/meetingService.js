@@ -6,6 +6,10 @@ function getAll() {
     return httpService.get(endPoint);
 }
 
+function getUpcomingMeetingsForUser(user) {
+    return httpService.get(`${endPoint}?user=${user._id}`)
+}
+
 function get(id) {
     return httpService.get(`${endPoint}/${id}`);
 }
@@ -30,6 +34,7 @@ function create(meeting) {
 
 export default {
     getAll,
+    getUpcomingMeetingsForUser,
     get,
     edit,
     addParticipant,
