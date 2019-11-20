@@ -6,8 +6,8 @@ const ProtectedRoute = ({roles, path, component: Component, render, ...rest}) =>
     const user = authService.getCurrentUser();
     
     const userHasRoles = () => {
-        return roles.every(role => {
-            user.roles.find(userrole => role === userrole);
+        return roles.some(role => {
+            return user.roles.find(userrole => role === userrole);
         });
     };
     

@@ -7,12 +7,12 @@ const MeetingPreviewCard = ({meeting}) => {
         const startsIn = moment().to(moment(meeting.timestart), true);
         return (
             <span>
-                <p>{`Findet statt in: ${startsIn}`}</p>
+                <p>{`Findet statt in ${startsIn}`}</p>
                 
                 {meeting.room && (
                     <React.Fragment>
                         <p>{`Im ${meeting.room.name}`}</p>
-                        {meeting.room.seatsize && <p>{`Sitzplätze: ${meeting.room.seatsize}`}</p>}
+                        {false && meeting.room.seatsize && <p>{`Sitzplätze: ${meeting.room.seatsize}`}</p>}
                     </React.Fragment>
                 )}
                 {meeting.address && <p>{`Straße: ${meeting.address}`}</p>}

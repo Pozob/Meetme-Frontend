@@ -113,10 +113,14 @@ class Form extends Component {
     
     renderUserCheckbox(elements, dataField) {
         const selectedUsers = this.state.data[dataField];
-        return elements.map(element => {
-            const selected = !!selectedUsers.find(selectedUser => selectedUser === element._id);
-            return <Checkbox key={element._id} user={element} selected={selected} onChange={(e) => this.handleCheckboxSelect(e, dataField)} />
-        });
+        return (
+            <div className="row">
+                {elements.map(element => {
+                const selected = !!selectedUsers.find(selectedUser => selectedUser === element._id);
+                return <Checkbox key={element._id} user={element} selected={selected} onChange={(e) => this.handleCheckboxSelect(e, dataField)} />
+            })}
+            </div>
+        );
     }
     
     handleCheckboxSelect = ({currentTarget: checkbox}, dataField) => {
@@ -131,7 +135,7 @@ class Form extends Component {
         this.setState({data});
     };
     
-    renderLabel = label => <label>{label}</label>;
+    renderLabel = label => <p><label>{label}</label></p>;
 }
 
 export default Form;

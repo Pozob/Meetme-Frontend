@@ -60,10 +60,17 @@ class EditProfileForm extends Form {
         return (
             <React.Fragment>
                 <form onSubmit={this.handleSubmit}>
+                    <h5>Profildaten ändern</h5>
                     {this.renderInput("name", "Name")}
                     {this.renderInput("email", "E-Mail", {type: "email"})}
                     {this.renderSelect("department", "Abteilung", this.state.departments)}
                     {this.renderSubmitButton("Änderungen speichern")}
+                    
+                    {/*//TODO: Implement Passwort changing*/}
+                    <h5>Passwort ändern</h5>
+                    {this.renderInput("password", "Neues Passwort")}
+                    {this.renderInput("passwordrepeat", "Neues Passwort wiederholen")}
+                    {this.renderSubmitButton("Passwort ändern")}
                 </form>
             </React.Fragment>
         );

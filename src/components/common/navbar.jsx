@@ -5,6 +5,11 @@ import Sidenav from "./sidenav";
 
 const Navbar = () => {
     const user = authService.getCurrentUser();
+    let isAdmin = false;
+    if(user && user.roles) {
+        isAdmin = user.roles.find(userrole => userrole === "Admin");
+    }
+    
     return (
         <React.Fragment>
             <nav className="blue-grey darken-2">
@@ -22,9 +27,11 @@ const Navbar = () => {
                             <React.Fragment>
                                 <li><NavLink to={'/profile'}>{user.name}</NavLink></li>
                                 <li><NavLink to={'/meetings'}>Meetings</NavLink></li>
-                                <li><NavLink to={"/rooms"}>Raumverwaltung</NavLink></li>
                                 <li><NavLink to={'/logout'}>Logout</NavLink></li>
                             </React.Fragment>
+                        )}
+                        {isAdmin && (
+                            <li><NavLink to={"/rooms"}>Raumverwaltung</NavLink></li>
                         )}
                     </ul>
                 </div>

@@ -14,7 +14,7 @@ const UserGreeting = ({user, meetingBooked}) => {
                 <React.Fragment>
                     <h3>{`Wilkommen ${user.name}`}</h3>
                     {meetingBooked && <p>Nachfolgend siehen Sie alle Ihre Meetings an denen Sie teilnehmen.</p>}
-                    {!meetingBooked && <p>Sie haben sich noch in kein Meeting eingetragen. <br /><Link to={"/meetings"}>Hier</Link> können Sie ein neues Anlegen oder in ein bestehendes beitreten.</p>}
+                    {!meetingBooked && <p>Sie haben sich noch in keinem Meeting eingetragen. <br /><Link to={"/meetings"}>Hier</Link> können Sie ein neues anlegen oder in einem bestehenden beitreten.</p>}
                 </React.Fragment>
             )}
         </React.Fragment>

@@ -8,7 +8,7 @@ import moment from "moment";
 
 class MeetingForm extends Form {
     state = {
-        data: {_id: "", name: "", description: "", room: "", date: "", timestart: "", timeend: "", participants: []},
+        data: {_id: "", name: "", description: "", room: "", address: "", date: "", timestart: "", timeend: "", participants: []},
         errors: {},
         rooms: [],
         newMeeting: true,
@@ -19,7 +19,8 @@ class MeetingForm extends Form {
         _id: Joi.string().allow(""),
         name: Joi.string().min(3).required().label("Meeting Name"),
         description: Joi.string().allow("").label("Beschreibung"),
-        room: Joi.string().required().allow(""),
+        room: Joi.string().allow(""),
+        address: Joi.string().allow(""),
         date: Joi.string(),
         timestart: Joi.string(),
         timeend: Joi.string(),
@@ -74,6 +75,7 @@ class MeetingForm extends Form {
                 {this.renderInput("name", "Meeting Name", {autoFocus: true})}
                 {this.renderInput("description", "Beschreibung")}
                 {this.renderSelect("room", "Meeting Raum", this.state.rooms)}
+                {this.renderInput("address", "Addresse")}
                 {this.renderDatePicker("date", "Datum")}
                 {this.renderTimePicker("timestart", "Uhrzeit")}
                 {this.renderTimePicker("timeend", "Endzeit")}

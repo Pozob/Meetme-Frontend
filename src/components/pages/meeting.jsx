@@ -20,7 +20,7 @@ class Meeting extends Component {
                      link: {
                          target: "/meetings/"+meeting._id,
                      },
-                     imageLink: `https://picsum.photos/seed/${meeting._id}/298`
+                     //imageLink: `https://picsum.photos/seed/${meeting._id}/298`
                  };
              });
              this.setState({meetings: viewMeetings})
