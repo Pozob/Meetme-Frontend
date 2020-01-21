@@ -66,3 +66,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+##Enviromental Variables
+This App neeed certain Enviromental Variables to function properly
+
+`REACT_APP_BACKEND_URL`: URL to the Backend
