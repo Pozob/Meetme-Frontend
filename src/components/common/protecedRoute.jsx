@@ -6,7 +6,8 @@ const ProtectedRoute = ({roles, path, component: Component, render, ...rest}) =>
     const user = authService.getCurrentUser();
     
     const userHasRoles = () => {
-        return roles.some(role => {
+        // If roles is given, check it. Otherwise let the User pass
+        return !roles.length || roles.some(role => {
             return user.roles.find(userrole => role === userrole);
         });
     };
