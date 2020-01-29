@@ -59,7 +59,7 @@ class MeetingDetails extends Component {
         const {meeting} = this.state;
         return (
             <React.Fragment>
-                <Heading editLink={"/meetings/edit/"+meeting._id}>{`Details für ${meeting.name}`}</Heading>
+                <Heading editLink={"/meetings/edit/"+meeting._id} deleteLink={'/'}>{`Details für ${meeting.name}`}</Heading>
                 {this.renderActionButton()}
                 
                 {this.renderDetails()}

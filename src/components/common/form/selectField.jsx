@@ -13,14 +13,15 @@ class SelectField extends Component {
     };
     
     render() {
-        const {name, label, s, selections, ...rest} = this.props;
+        const {name, label, s, selections, error, ...rest} = this.props;
         return (
             <React.Fragment>
                 <div className={this.getClasses(s)}>
                     <select ref={selectField => this.select = selectField} name={name} id={name} {...rest}>
-                        <option value="" disabled>Bitte wählen</option>
+                        <option value="">Bitte wählen</option>
                         {selections.map(opt => <option key={opt._id} value={opt._id}>{opt.name}</option>)}
                     </select> <label htmlFor={name}>{label}</label>
+                    <span className="helper-text" data-error={error} />
                 </div>
             </React.Fragment>
         );
